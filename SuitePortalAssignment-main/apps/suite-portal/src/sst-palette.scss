@@ -1,0 +1,162 @@
+$sst-bg-light: #edf7f6;
+$sst-text-on-bg-light: #434a53;
+
+$sst-bg-dark: #434a53;
+$sst-text-on-bg-dark: #edf7f6;
+
+$sst-text-light: #a1a5a9;
+
+$theme-text-on-primary: white;
+$theme-text-on-accent: white;
+
+$sst-primary-palette: (
+  50: #e1f3f3,
+  100: #b5e1e0,
+  200: #84cdcc,
+  300: #52b8b8,
+  400: #2da9a8,
+  500: #089a99,
+  600: #079291,
+  700: #068886,
+  800: #047e7c,
+  900: #026c6b,
+  A100: #88dfdd,
+  A200: #58d1cf,
+  A400: #2bc2bf,
+  A700: #18cbc7,
+  contrast: (
+    50: #101010,
+    100: #101010,
+    200: #101010,
+    300: #101010,
+    400: #101010,
+    500: $theme-text-on-primary,
+    600: $theme-text-on-primary,
+    700: $theme-text-on-primary,
+    800: $theme-text-on-primary,
+    900: $theme-text-on-primary,
+    A100: #101010,
+    A200: #101010,
+    A400: #101010,
+    A700: #101010,
+  ),
+);
+
+$sst-accent-palette: (
+  50: #fcece3,
+  100: #f8d0b9,
+  200: #f3b18b,
+  300: #ee925d,
+  400: #ea7a3a,
+  500: #e66317,
+  600: #e35b14,
+  700: #df5111,
+  800: #db470d,
+  900: #d53507,
+  A100: #fffefe,
+  A200: #ffd4cb,
+  A400: #ffaa98,
+  A700: #ff957f,
+  contrast: (
+    50: #101010,
+    100: #101010,
+    200: $theme-text-on-accent,
+    300: $theme-text-on-accent,
+    400: $theme-text-on-accent,
+    500: $theme-text-on-accent,
+    600: $theme-text-on-accent,
+    700: $theme-text-on-accent,
+    800: $theme-text-on-accent,
+    900: $theme-text-on-accent,
+    A100: #101010,
+    A200: #101010,
+    A400: $theme-text-on-accent,
+    A700: $theme-text-on-accent,
+  ),
+);
+
+$sst-warn-palette: (
+  50: #fae6e5,
+  100: #f2c1be,
+  200: #ea9893,
+  300: #e26e68,
+  400: #db4f47,
+  500: #d53027,
+  600: #d02b23,
+  700: #ca241d,
+  800: #c41e17,
+  900: #ba130e,
+  A100: #ffe8e7,
+  A200: #ffb6b4,
+  A400: #ff8481,
+  A700: #ff6b68,
+  contrast: (
+    50: #101010,
+    100: #101010,
+    200: $theme-text-on-primary,
+    300: $theme-text-on-primary,
+    400: $theme-text-on-primary,
+    500: $theme-text-on-primary,
+    600: $theme-text-on-primary,
+    700: $theme-text-on-primary,
+    800: $theme-text-on-primary,
+    900: $theme-text-on-primary,
+    A100: #101010,
+    A200: #101010,
+    A400: #101010,
+    A700: $theme-text-on-primary,
+  ),
+);
+
+$brand-normal: #dad5cd;
+$brand-light: #eceadf;
+$brand-lightest: lighten(#eceadf, 8%);
+$brand-dark: #424a54;
+
+$brand-link: #52b8b8;
+$brand-link-hover: #068886;
+
+$brand-accent: #e66317;
+$brand-accent-light: lighten($brand-accent, 25%);
+$brand-accent-dark: darken($brand-accent, 25%);
+
+$brand-info: #2f84c2;
+$brand-success: #2fab74;
+$brand-warning: #e8c658;
+$brand-error: #ca241d;
+
+$brand-font-light: #e5e5e5;
+$brand-font-light-disabled: darken($brand-font-light, 25%);
+$brand-font-dark: #535353;
+$brand-font-dark-disabled: lighten($brand-font-dark, 25%);
+
+$sst-primary: #008282;
+$sst-accent: #e66317;
+
+.mat-accent-color {
+  color: $sst-accent !important;
+}
+
+.mat-primary-color {
+  color: $sst-primary !important;
+}
+
+.mat-body-color {
+  color: initial;
+}
+
+.mat-error-color {
+  color: $brand-error !important;
+}
+
+.mat-warn-color {
+  color: $brand-warning !important;
+}
+
+.mat-info-color {
+  color: $brand-info !important;
+}
+
+.mat-success-color {
+  color: $brand-success !important;
+}

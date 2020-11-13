@@ -1,0 +1,23 @@
+:host {
+  display: block;
+
+  main {
+    padding: var(--sp-margin-size);
+  }
+
+  mat-toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    mat-label {
+      margin-right: 16px;
+    }
+    .spacer {
+      flex-grow: 100;
+    }
+    a.admin {
+      justify-self: end;
+    }
+  }
+
+}

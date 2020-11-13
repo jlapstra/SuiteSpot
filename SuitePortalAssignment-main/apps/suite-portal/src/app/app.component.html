@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <mat-label>Resident Portal</mat-label>
+  <a mat-button [routerLink]="'home'">Home</a>
+  <div class="spacer"></div>
+  <a class="admin" mat-button [routerLink]="'admin'">Admin</a>
+</mat-toolbar>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
