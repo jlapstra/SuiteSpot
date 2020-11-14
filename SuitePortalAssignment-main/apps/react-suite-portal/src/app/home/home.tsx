@@ -2,9 +2,15 @@ import React from 'react';
 import { ALL_SERVICE_TYPES } from '@suiteportal/api-interfaces';
 import './home.css';
 
+import AlertHandling from '../alert-handling/alert-handling';
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Alert from 'react-bootstrap/Alert';
+
+
+
 
 type MyProps = {};
 type MyState = {
@@ -14,21 +20,39 @@ type MyState = {
   serviceType: string,
   summary: string,
   details: string,
+  variant: string,
+  message: string,
+  show: boolean
 };
+
+const baseState: MyState = {
+  appartmentNumber: "",
+  requesterName: "",
+  email: "",
+  serviceType: "",
+  summary: "",
+  details: "",
+  variant: "",
+  message: "",
+  show: false
+};
+
 class Home extends React.Component<MyProps, MyState> {
   constructor(props) {
     super(props);
-    this.state = {
-      appartmentNumber: "",
-      requesterName: "",
-      email: "",
-      serviceType: "",
-      summary: "",
-      details: "",
-    }
+    this.state = baseState
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+  }
+
+  public handleClose() {
+    this.setState({
+      show: false
+    })
+    this.resetForm()
   }
 
   public handleChange(event: { target: any }) {
@@ -36,28 +60,70 @@ class Home extends React.Component<MyProps, MyState> {
     this.setState({ [name]: value } as Pick<MyState, keyof MyState>);
   }
 
+  private resetForm() {
+    this.setState(baseState);
+  }
+
   private handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // // TODO:
+    const axios = require('axios');
+
+    return axios
+            .post('http://localhost:3333/api/maintenance-requests', {
+              unitNumber: this.state.appartmentNumber,
+              name: this.state.requesterName,
+              email: this.state.email,
+              serviceType: this.state.serviceType,
+              summary: this.state.summary,
+              details: this.state.details
+            })
+            .then((response) => {
+                this.setState({
+                  show: true,
+                  variant: 'success',
+                  message: 'Request ' + response.data.id + ' Submitted Successfully!'
+                });
+
+            })
+            .catch(err => {
+              this.setState({
+                show: true,
+                variant: 'error',
+                message: 'Please Try Again: ' + err
+              })
+            });
   }
 
   render() {
     let options = []
+    let alerts = []
 
     for (const option of ALL_SERVICE_TYPES) {
       options.push(
-        <option>
+        <option key={option}>
           { option }
         </option>
       );
     }
 
+    if (this.state.show) {
+      alerts.push(
+        <Alert
+          key={this.state.message[0]}
+          variant={ this.state.variant }
+          onClose={ this.handleClose }
+          dismissible>
+          { this.state.message }
+        </Alert>
+      )
+    }
+
     return(
       <div>
-        <p>Please Submit Maintenance Requests Below</p>
-
+        <h3>Please Submit Maintenance Requests Below</h3>
         <Card>
           <Card.Body>
+            { alerts }
             <Form onSubmit={ this.handleSubmit }>
               <Form.Group controlId="maint-form.appartmentNumber">
                 <Form.Label>Appartment Unit #</Form.Label>
@@ -94,7 +160,7 @@ class Home extends React.Component<MyProps, MyState> {
                   value={ this.state.serviceType }
                   onChange={ this.handleChange }
                   >
-                  <option key='placeholder' hidden>-- Select One --</option>
+                  <option key='placeholder' hidden >-- Select One --</option>
                   { options }
                 </Form.Control>
               </Form.Group>
