@@ -2,8 +2,6 @@ import React from 'react';
 import { ALL_SERVICE_TYPES } from '@suiteportal/api-interfaces';
 import './home.css';
 
-import AlertHandling from '../alert-handling/alert-handling';
-
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -88,7 +86,7 @@ class Home extends React.Component<MyProps, MyState> {
             .catch(err => {
               this.setState({
                 show: true,
-                variant: 'error',
+                variant: 'danger',
                 message: 'Please Try Again: ' + err
               })
             });
@@ -119,8 +117,8 @@ class Home extends React.Component<MyProps, MyState> {
     }
 
     return(
-      <div>
-        <h3>Please Submit Maintenance Requests Below</h3>
+      <div className="contentMedium">
+        <h3 className="pageTitle">Please Submit Maintenance Requests Below</h3>
         <Card>
           <Card.Body>
             { alerts }
@@ -183,7 +181,9 @@ class Home extends React.Component<MyProps, MyState> {
                   onChange={ this.handleChange }
                   />
               </Form.Group>
-              <Button variant="primary" type="submit">Submit Request</Button>
+              <div className="text-center">
+                <Button variant="primary" type="submit">Submit Request</Button>
+              </div>
             </Form>
           </Card.Body>
         </Card>

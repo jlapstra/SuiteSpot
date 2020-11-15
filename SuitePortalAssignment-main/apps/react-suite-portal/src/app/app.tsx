@@ -12,6 +12,7 @@ import Nav from 'react-bootstrap/Nav';
 
 import Home from './home/home';
 import Admin from './admin/admin';
+import Requests from './requests/requests';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -28,13 +29,14 @@ export const App = () => {
               Submit Request
             </Nav.Link>
             <Nav.Link eventKey="2" as={Link} to="/admin">
-              Admin Page
+              Admin
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
       <main>
         <Switch>
+          <Route exact path={ "/admin/requests"} component={ Requests }/>
           <Route exact path={ "/admin" } component={ Admin }/>
           <Route exact path={ "/" } component={ Home }/>
         </Switch>
