@@ -23,6 +23,6 @@ describe('App', () => {
       </BrowserRouter>
     );
 
-    expect(getByText('Welcome to react-suite-portal!')).toBeTruthy();
+    expect(getByText('SuiteSpot Maintenance Requests')).toBeTruthy();
   });
 });
